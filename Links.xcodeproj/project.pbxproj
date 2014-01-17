@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		E11681BD1877647B00B041A9 /* NSSet+SetOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = E11681BC1877647B00B041A9 /* NSSet+SetOperations.m */; };
 		E1404F2D1885E6D0001B8251 /* GRKShape2.m in Sources */ = {isa = PBXBuildFile; fileRef = E1404F2C1885E6D0001B8251 /* GRKShape2.m */; };
-		E1404F311885F23A001B8251 /* GRKShape3.m in Sources */ = {isa = PBXBuildFile; fileRef = E1404F301885F23A001B8251 /* GRKShape3.m */; };
+		E1404F311885F23A001B8251 /* GRKShape.m in Sources */ = {isa = PBXBuildFile; fileRef = E1404F301885F23A001B8251 /* GRKShape.m */; };
 		E14A24CC1886CE8B0026507F /* GRKShape2Loader.m in Sources */ = {isa = PBXBuildFile; fileRef = E14A24CB1886CE8B0026507F /* GRKShape2Loader.m */; };
-		E14A24CF1886D22F0026507F /* GRKCollision3.m in Sources */ = {isa = PBXBuildFile; fileRef = E14A24CE1886D22F0026507F /* GRKCollision3.m */; };
+		E14A24CF1886D22F0026507F /* GRKCollision.m in Sources */ = {isa = PBXBuildFile; fileRef = E14A24CE1886D22F0026507F /* GRKCollision.m */; };
 		E18D875F187364E9007A8CD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E18D875E187364E9007A8CD3 /* Foundation.framework */; };
 		E18D8761187364E9007A8CD3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E18D8760187364E9007A8CD3 /* CoreGraphics.framework */; };
 		E18D8763187364E9007A8CD3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E18D8762187364E9007A8CD3 /* UIKit.framework */; };
@@ -52,12 +52,12 @@
 		E11681BC1877647B00B041A9 /* NSSet+SetOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+SetOperations.m"; sourceTree = "<group>"; };
 		E1404F2B1885E6D0001B8251 /* GRKShape2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRKShape2.h; sourceTree = "<group>"; };
 		E1404F2C1885E6D0001B8251 /* GRKShape2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRKShape2.m; sourceTree = "<group>"; };
-		E1404F2F1885F23A001B8251 /* GRKShape3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRKShape3.h; sourceTree = "<group>"; };
-		E1404F301885F23A001B8251 /* GRKShape3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRKShape3.m; sourceTree = "<group>"; };
+		E1404F2F1885F23A001B8251 /* GRKShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRKShape.h; sourceTree = "<group>"; };
+		E1404F301885F23A001B8251 /* GRKShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRKShape.m; sourceTree = "<group>"; };
 		E14A24CA1886CE8B0026507F /* GRKShape2Loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRKShape2Loader.h; sourceTree = "<group>"; };
 		E14A24CB1886CE8B0026507F /* GRKShape2Loader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRKShape2Loader.m; sourceTree = "<group>"; };
-		E14A24CD1886D22E0026507F /* GRKCollision3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRKCollision3.h; sourceTree = "<group>"; };
-		E14A24CE1886D22F0026507F /* GRKCollision3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRKCollision3.m; sourceTree = "<group>"; };
+		E14A24CD1886D22E0026507F /* GRKCollision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRKCollision.h; sourceTree = "<group>"; };
+		E14A24CE1886D22F0026507F /* GRKCollision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRKCollision.m; sourceTree = "<group>"; };
 		E18D875B187364E9007A8CD3 /* Links.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Links.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E18D875E187364E9007A8CD3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E18D8760187364E9007A8CD3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -118,14 +118,11 @@
 		E1404F2E1885F21F001B8251 /* ShapesRnD */ = {
 			isa = PBXGroup;
 			children = (
-				E1404F2B1885E6D0001B8251 /* GRKShape2.h */,
-				E1404F2C1885E6D0001B8251 /* GRKShape2.m */,
-				E14A24CA1886CE8B0026507F /* GRKShape2Loader.h */,
-				E14A24CB1886CE8B0026507F /* GRKShape2Loader.m */,
-				E1404F2F1885F23A001B8251 /* GRKShape3.h */,
-				E1404F301885F23A001B8251 /* GRKShape3.m */,
-				E14A24CD1886D22E0026507F /* GRKCollision3.h */,
-				E14A24CE1886D22F0026507F /* GRKCollision3.m */,
+				E1404F2F1885F23A001B8251 /* GRKShape.h */,
+				E1404F301885F23A001B8251 /* GRKShape.m */,
+				E14A24CD1886D22E0026507F /* GRKCollision.h */,
+				E14A24CE1886D22F0026507F /* GRKCollision.m */,
+				E1C0ABD31889C27300D0B9E8 /* Alternative */,
 			);
 			name = ShapesRnD;
 			sourceTree = "<group>";
@@ -206,6 +203,17 @@
 				E18D8786187364E9007A8CD3 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E1C0ABD31889C27300D0B9E8 /* Alternative */ = {
+			isa = PBXGroup;
+			children = (
+				E1404F2B1885E6D0001B8251 /* GRKShape2.h */,
+				E1404F2C1885E6D0001B8251 /* GRKShape2.m */,
+				E14A24CA1886CE8B0026507F /* GRKShape2Loader.h */,
+				E14A24CB1886CE8B0026507F /* GRKShape2Loader.m */,
+			);
+			name = Alternative;
 			sourceTree = "<group>";
 		};
 		E1DC7ACD187B28ED00DE86CF /* GraphKit */ = {
@@ -332,13 +340,13 @@
 				E18D876F187364E9007A8CD3 /* AppDelegate.m in Sources */,
 				E11681BD1877647B00B041A9 /* NSSet+SetOperations.m in Sources */,
 				E1404F2D1885E6D0001B8251 /* GRKShape2.m in Sources */,
-				E1404F311885F23A001B8251 /* GRKShape3.m in Sources */,
+				E1404F311885F23A001B8251 /* GRKShape.m in Sources */,
 				E18D87A81874C4B0007A8CD3 /* Link.m in Sources */,
 				E1ACDC981880B3FB001FA8F7 /* grk_math.c in Sources */,
 				E18D87A51874C488007A8CD3 /* Node.m in Sources */,
 				E18D879F1874BB2F007A8CD3 /* GraphView.m in Sources */,
 				E14A24CC1886CE8B0026507F /* GRKShape2Loader.m in Sources */,
-				E14A24CF1886D22F0026507F /* GRKCollision3.m in Sources */,
+				E14A24CF1886D22F0026507F /* GRKCollision.m in Sources */,
 				E18D876B187364E9007A8CD3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
