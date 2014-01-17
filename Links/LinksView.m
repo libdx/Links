@@ -9,8 +9,8 @@
 #import "LinksView.h"
 #import "Node.h"
 #import "Link.h"
-#import "GRKShape3.h"
-#import "GRKCollision3.h"
+#import "GRKShape.h"
+#import "GRKCollision.h"
 
 #import "grk_math.h"
 
@@ -76,10 +76,10 @@
     CGFloat angle = grk_line_angle(delta.y, delta.x);
 
     CGPoint points[2] = {link.parentNode.center, link.childNode.center};
-    GRKShape3Data lineShape = GRKShape3DataMakeLine(points);
-    GRKShape3Data shapes[2] = {lineShape, [link.childNode shape]};
-    CGPoint collision = [GRKCollision3 nearestPointToPoint:link.parentNode.center fromCollisionOfShapes:shapes];
-    GRKShape3DataCleanup(&lineShape);
+    GRKShapeData lineShape = GRKShapeDataMakeLine(points);
+    GRKShapeData shapes[2] = {lineShape, [link.childNode shape]};
+    CGPoint collision = [GRKCollision nearestPointToPoint:link.parentNode.center fromCollisionOfShapes:shapes];
+    GRKShapeDataCleanup(&lineShape);
 
     grk_linear_eq_pa_t line = {collision, angle};
     grk_arrowhead_t arrowhead = grk_line_arrowhead(line, to_radians(35), 10.0);

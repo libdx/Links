@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GRKShape3.h"
+#import "GRKShape.h"
 
 @protocol Node <NSObject>
 
@@ -20,7 +20,7 @@
 @property (assign, nonatomic, getter = isHighlighted) BOOL highlighted;
 
 @property (assign, nonatomic) NSInteger shapeNumber;
-- (const GRKShape3Data)shape;
+- (const GRKShapeData)shape;
 
 @end
 

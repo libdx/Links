@@ -10,7 +10,7 @@
 
 @implementation BaseNode
 {
-    GRKShape3Data _shapeData;
+    GRKShapeData _shapeData;
 }
 
 @synthesize center = _center;
@@ -32,14 +32,13 @@
 
     _center = center;
     _size = size;
-    _shapeNumber = GRKShape3TypeEllipse;
+    _shapeNumber = GRKShapeTypeEllipse;
 
     return self;
 }
 
 - (CGRect)boundingBox
 {
-    // TODO: calculate rect here
     CGRect box = CGRectMake(_center.x - round(0.5 * (_size.width)),
                             _center.y - round(0.5 * (_size.height)),
                             _size.width,
@@ -47,9 +46,9 @@
     return box;
 }
 
-- (const GRKShape3Data)shape
+- (const GRKShapeData)shape
 {
-    GRKShape3DataCleanup(&_shapeData);
+    GRKShapeDataCleanup(&_shapeData);
     _shapeData = GRKShapeMake(self.shapeNumber, [self boundingBox], self);
     return _shapeData;
 }

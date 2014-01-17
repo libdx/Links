@@ -12,11 +12,6 @@
 #import "Link.h"
 #import "NodeView.h"
 
-/* TODO:
- - physicsBody (bodyPath)
- - arrows and intersections
- */
-
 @interface GraphView ()
 
 @property (strong, nonatomic) LinksView *linksView;

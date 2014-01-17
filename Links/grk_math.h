@@ -22,10 +22,8 @@
 
 #ifdef USE_CORE_GRAPHICS_TYPES
     #define GRK_INLINE CG_INLINE
-//    #define GRK_EXTERN CG_EXTERN
 #else
     #define GRK_INLINE static inline
-//    #define GRK_EXTERN extern
 #endif
 
 #define to_degrees(r) (r) * 180 / M_PI
@@ -126,7 +124,6 @@ grk_point_t grk_nearest_point(grk_point_t point, grk_point_t *locus, int number)
  If intersection is a point than first point is this intersection and second is a NAN. If intersection is a line
  two points represent a line.
  */
-//void grk_collision_line_line(struct grk_line line1, struct grk_line line2, grk_point_t collisions[2]);
 void grk_collision_line_line(grk_point_t l1points[2], grk_point_t l2points[2], grk_point_t collisions[2]);
 
 /*
@@ -137,47 +134,10 @@ void grk_collision_line_line(grk_point_t l1points[2], grk_point_t l2points[2], g
  @param collisions Preallocated array of two grk_point_t's. If intersection is empty set that all two points is a NAN.
  If intersection is a point than first point is this intersection and second is a NAN.
  */
-//void grk_collision_line_ellipse(struct grk_line line, struct grk_ellipse ellipse, grk_point_t collisions[2]);
 void grk_collision_line_ellipse(grk_point_t line_points[2],
                                 grk_point_t center,
                                 grk_float_t radius_x,
                                 grk_float_t radius_y,
                                 grk_point_t collisions[2]);
-
-//void grk_collision_line_rect(struct grk_line line, struct grk_rect rect, grk_point_t collisions[2]);
-
-//struct grk_line {
-//    grk_point_t points[2];
-//};
-//
-//struct grk_ellipse {
-//    grk_point_t center;
-//    grk_float_t radius;
-//};
-//
-//struct grk_rect {
-//    grk_point_t origin;
-//    struct {
-//        grk_float_t width;
-//        grk_float_t height;
-//    } size;
-//};
-//
-//enum grk_bezier_types {
-//    grk_bezier_linear = 0,
-//    grk_bezier_quadratic,
-//    grk_bezier_cubic
-//};
-//
-//struct grk_bezier {
-//    enum grk_bezier_types type;
-//    grk_point_t points[4];
-//};
-//
-//struct grk_locus_set {
-//    grk_point_t *points;
-//    int count;
-//};
-
 
 #endif //__grk_math_h__
