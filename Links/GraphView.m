@@ -77,7 +77,7 @@ static void setCenterY(UIView *view, CGFloat centerY)
             [_delegate graphView:self didDeselectNode:node];
     } else {
         Link *link;
-        id<Node> node = [self nodeWithCenter:location parent:_nodes.lastObject link:&link];
+        id<Node> node = [self nodeWithCenter:location parent:_nodes.firstObject link:&link];
 
         [self setNeedsUpdateByAddingNode:node link:link];
     }
