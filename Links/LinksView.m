@@ -14,13 +14,17 @@
 
 #import "grk_math.h"
 
-@interface LinksView ()
+@interface GRKDrawingLinksView ()
+{
+    NSMutableDictionary *_boundingBoxesOfLinkPaths;
+}
 
 @property (strong, nonatomic) NSMutableSet *links;
+@property (assign, nonatomic, readonly) CGFloat lineWidth;
 
 @end
 
-@implementation LinksView
+@implementation GRKDrawingLinksView
 
 - (instancetype)initWithFrame:(CGRect)frame links:(NSSet *)links;
 {
@@ -41,19 +45,24 @@
     return _links;
 }
 
+- (CGFloat)lineWidth
+{
+    return 3.0;
+}
+
 - (void)setNeedsUpdateByAddingLinks:(NSSet *)links;
 {
     [self.links unionSet:links];
-    [self setNeedsUpdate];
+    [self setNeedsUpdateForLinks:links];
 }
 
 - (void)setNeedsUpdateBySubtractingLinks:(NSSet *)links;
 {
     [_links minusSet:links];
-    [self setNeedsUpdate];
+    [self setNeedsUpdateForLinks:links];
 }
 
-- (void)setNeedsUpdate
+- (void)setNeedsUpdateForLinks:(NSSet *)links
 {
     [self setNeedsDisplay];
 }
@@ -100,7 +109,7 @@
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextSetShouldAntialias(ctx, true);
     CGContextSetAllowsAntialiasing(ctx, true);
-    CGContextSetLineWidth(ctx, 3);
+    CGContextSetLineWidth(ctx, self.lineWidth);
     CGContextSetStrokeColorWithColor(ctx, [UIColor brownColor].CGColor);
 
     for (Link *link in _links.copy) {
@@ -110,5 +119,119 @@
 
     CGContextStrokePath(ctx);
 }
+
+@end
+
+@interface GRKLinkView : UIView
+
+@property (assign, nonatomic) CGPoint origin;
+@property (assign, nonatomic) CGPoint ending;
+@property (assign, nonatomic) grk_arrowhead_t arrowhead;
+
+@end
+
+@implementation GRKLinkView
+
+- (CGPathRef)bodyPathWithOrigin:(CGPoint)origin ending:(CGPoint)ending NS_RETURNS_INNER_POINTER
+{
+    UIBezierPath *path = [[UIBezierPath alloc] init];
+    [path moveToPoint:origin];
+    [path addLineToPoint:ending];
+    [path closePath];
+    return path.CGPath;
+}
+
+- (CGPathRef)arrowheadPathWithArrowhead:(grk_arrowhead_t)arrowhead NS_RETURNS_INNER_POINTER
+{
+    UIBezierPath *path = [[UIBezierPath alloc] init];
+
+    [path moveToPoint:CGPointMake(arrowhead.points[0].x, arrowhead.points[0].y)];
+    [path addLineToPoint:CGPointMake(arrowhead.points[1].x, arrowhead.points[1].y)];
+    [path closePath];
+
+    [path moveToPoint:CGPointMake(arrowhead.points[0].x, arrowhead.points[0].y)];
+    [path addLineToPoint:CGPointMake(arrowhead.points[2].x, arrowhead.points[2].y)];
+    [path closePath];
+
+    return path.CGPath;
+
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSetShouldAntialias(ctx, true);
+    CGContextSetAllowsAntialiasing(ctx, true);
+    CGContextSetLineWidth(ctx, 3);
+    CGContextSetStrokeColorWithColor(ctx, [UIColor brownColor].CGColor);
+
+    CGContextAddPath(ctx, [self bodyPathWithOrigin:self.origin ending:self.ending]);
+    CGContextAddPath(ctx, [self arrowheadPathWithArrowhead:self.arrowhead]);
+
+    CGContextStrokePath(ctx);
+}
+
+@end
+
+@interface GRKViewedLinksView  ()
+
+@property (strong, nonatomic) NSMutableSet *links;
+
+@end
+
+@implementation GRKViewedLinksView
+
+- (instancetype)initWithFrame:(CGRect)frame links:(NSSet *)links
+{
+    self = [super initWithFrame:frame];
+    if (nil == self)
+        return nil;
+
+    _links = links.mutableCopy;
+    self.backgroundColor = [UIColor clearColor];
+
+    return self;
+}
+
+- (NSMutableSet *)links
+{
+    if (nil == _links)
+        _links = [NSMutableSet set];
+    return _links;
+}
+
+- (void)setNeedsUpdateByAddingLinks:(NSSet *)links
+{
+    [_links unionSet:links];
+}
+
+- (void)setNeedsUpdateBySubtractingLinks:(NSSet *)links
+{
+    [_links minusSet:links];
+}
+
+- (void)setNeedsUpdateForLinks:(NSSet *)links
+{
+    [self setNeedsDisplay];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    // TODO: finish implementation
+}
+
+- (CGRect)rectForLink:(Link *)link
+{
+    CGPoint origin;
+    origin.x = MIN(link.parentNode.center.x, link.childNode.center.x);
+    origin.y = MIN(link.parentNode.center.y, link.childNode.center.y);
+    CGPoint ending;
+    ending.x = MAX(link.parentNode.center.x, link.childNode.center.x);
+    ending.y = MAX(link.parentNode.center.y, link.childNode.center.y);
+    CGSize size = CGSizeMake(ending.x - origin.x, ending.y - origin.y);
+    return CGRectIntegral(CGRectMake(origin.x, origin.y, size.width, size.height));
+}
+
 
 @end

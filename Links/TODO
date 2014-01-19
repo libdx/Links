@@ -1,0 +1,17 @@
+Base Library:
+ - nodes positioning
+ - scrolling
+ - zooming
+ - links selection
+ - overlays
+ - scrolling on nodes' dragging
+ - better ergonomic of nodes' dragging
+
+Application:
+ - control knobs
+ - toolbar
+ - copy/paste/delete
+ - persistance
+ - document browser
+ - quick node creation "Quick Launch"
+

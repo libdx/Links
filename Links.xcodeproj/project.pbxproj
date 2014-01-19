@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E11648BD188C808800279A3E /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = E11648BC188C808800279A3E /* TODO */; };
 		E11681BD1877647B00B041A9 /* NSSet+SetOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = E11681BC1877647B00B041A9 /* NSSet+SetOperations.m */; };
 		E1404F2D1885E6D0001B8251 /* GRKShape2.m in Sources */ = {isa = PBXBuildFile; fileRef = E1404F2C1885E6D0001B8251 /* GRKShape2.m */; };
 		E1404F311885F23A001B8251 /* GRKShape.m in Sources */ = {isa = PBXBuildFile; fileRef = E1404F301885F23A001B8251 /* GRKShape.m */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E11648BC188C808800279A3E /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		E11681B8187754C600B041A9 /* UIView+Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Geometry.h"; sourceTree = "<group>"; };
 		E11681B9187754C600B041A9 /* UIView+Geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Geometry.m"; sourceTree = "<group>"; };
 		E11681BB1877647B00B041A9 /* NSSet+SetOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+SetOperations.h"; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		E18D8764187364E9007A8CD3 /* Links */ = {
 			isa = PBXGroup;
 			children = (
+				E11648BC188C808800279A3E /* TODO */,
 				E11681B8187754C600B041A9 /* UIView+Geometry.h */,
 				E11681B9187754C600B041A9 /* UIView+Geometry.m */,
 				E11681BB1877647B00B041A9 /* NSSet+SetOperations.h */,
@@ -314,6 +317,7 @@
 			files = (
 				E18D8777187364E9007A8CD3 /* Images.xcassets in Resources */,
 				E18D8769187364E9007A8CD3 /* InfoPlist.strings in Resources */,
+				E11648BD188C808800279A3E /* TODO in Resources */,
 				E18D8772187364E9007A8CD3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,7 +483,8 @@
 				INFOPLIST_FILE = "Links/Links-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -494,7 +499,8 @@
 				INFOPLIST_FILE = "Links/Links-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -14,7 +14,7 @@
 
 @interface GraphView ()
 
-@property (strong, nonatomic) LinksView *linksView;
+@property (strong, nonatomic) UIView<GRKLinksView> *linksView;
 
 @property (strong, nonatomic) NSMutableOrderedSet *nodes;
 @property (strong, nonatomic) NSMutableOrderedSet *links;
@@ -48,7 +48,7 @@ static void setCenterY(UIView *view, CGFloat centerY)
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _linksView = [[LinksView alloc] initWithFrame:self.bounds links:_links.set];
+        _linksView = [[GRKDrawingLinksView alloc] initWithFrame:self.bounds links:_links.set];
         [self addSubview:_linksView];
         _nodes = [[NSMutableOrderedSet alloc] init];
         _links = [[NSMutableOrderedSet alloc] init];
@@ -225,13 +225,20 @@ static void setCenterY(UIView *view, CGFloat centerY)
     CGPoint location = [touch locationInView:self];
     CGPoint previousLocation = [touch previousLocationInView:self];
     CGPoint delta = CGPointMake(location.x - previousLocation.x, location.y - previousLocation.y);
-    [_movedViews enumerateObjectsUsingBlock:^(NodeView *view, BOOL *stop) {
+
+    for (NodeView *view in _movedViews) {
         setCenterX(view, view.center.x + delta.x);
         setCenterY(view, view.center.y + delta.y);
         id<Node> node = view.node;
         node.center = view.center;
-    }];
-    [_linksView setNeedsUpdate];
+    }
+
+//    NSSet *movedNodes = [_movedViews valueForKeyPath:@"@distinctUnionOfObjects.node"];
+//    NSPredicate *parentOrChildNode = [NSPredicate predicateWithFormat:@"parentNode IN %@ OR childNode IN %@",
+//                                      movedNodes, movedNodes];
+//    NSSet *affectedLinks = [_links filteredOrderedSetUsingPredicate:parentOrChildNode].set;
+//    [_linksView setNeedsUpdateForLinks:affectedLinks];
+    [_linksView setNeedsUpdateForLinks:nil];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event

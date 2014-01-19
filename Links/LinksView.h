@@ -10,12 +10,20 @@
 
 @class Link;
 
-@interface LinksView : UIView
+@protocol GRKLinksView <NSObject>
 
 - (instancetype)initWithFrame:(CGRect)frame links:(NSSet *)links;
 
 - (void)setNeedsUpdateByAddingLinks:(NSSet *)links;
 - (void)setNeedsUpdateBySubtractingLinks:(NSSet *)links;
-- (void)setNeedsUpdate;
+- (void)setNeedsUpdateForLinks:(NSSet *)links;
+
+@end
+
+@interface GRKDrawingLinksView : UIView <GRKLinksView>
+
+@end
+
+@interface GRKViewedLinksView : UIView <GRKLinksView>
 
 @end
