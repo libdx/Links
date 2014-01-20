@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GRKShape.h"
 
-@protocol Node <NSObject>
+@protocol GRKNode <NSObject>
 
 @property (assign, nonatomic) CGPoint center;
 @property (assign, nonatomic) CGSize size;
@@ -24,7 +24,7 @@
 
 @end
 
-@interface BaseNode : NSObject <Node>
+@interface GRKBaseNode : NSObject <GRKNode>
 
 - (instancetype)initWithCenter:(CGPoint)center;
 - (instancetype)initWithCenter:(CGPoint)center size:(CGSize)size;

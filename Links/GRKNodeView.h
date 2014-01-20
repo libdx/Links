@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol Node;
+@protocol GRKNode;
 
-@interface NodeView : UIView
+@interface GRKNodeView : UIView
 
-@property (weak, nonatomic, readonly) id<Node> node;
+@property (weak, nonatomic, readonly) id<GRKNode> node;
 
-- (instancetype)initWithFrame:(CGRect)frame node:(id<Node>)node;
-- (instancetype)initWithNode:(id<Node>)node;
+- (instancetype)initWithFrame:(CGRect)frame node:(id<GRKNode>)node;
+- (instancetype)initWithNode:(id<GRKNode>)node;
 
 @property (assign, nonatomic, getter = isSelected) BOOL selected;
 @property (assign, nonatomic, getter = isHighlighted) BOOL highlighted;

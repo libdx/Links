@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Alexander Ignatenko. All rights reserved.
 //
 
-#import "LinksView.h"
-#import "Node.h"
-#import "Link.h"
+#import "GRKLinksView.h"
+#import "GRKNode.h"
+#import "GRKLink.h"
 #import "GRKShape.h"
 #import "GRKCollision.h"
 
@@ -67,7 +67,7 @@
     [self setNeedsDisplay];
 }
 
-- (CGPathRef)bodyPathForLink:(Link *)link NS_RETURNS_INNER_POINTER
+- (CGPathRef)bodyPathForLink:(GRKLink *)link NS_RETURNS_INNER_POINTER
 {
     UIBezierPath *path = [[UIBezierPath alloc] init];
     [path moveToPoint:CGPointMake(link.parentNode.center.x, link.parentNode.center.y)];
@@ -76,7 +76,7 @@
     return path.CGPath;
 }
 
-- (CGPathRef)arrowheadPathForLink:(Link *)link NS_RETURNS_INNER_POINTER
+- (CGPathRef)arrowheadPathForLink:(GRKLink *)link NS_RETURNS_INNER_POINTER
 {
     UIBezierPath *path = [[UIBezierPath alloc] init];
     CGPoint delta;
@@ -112,7 +112,7 @@
     CGContextSetLineWidth(ctx, self.lineWidth);
     CGContextSetStrokeColorWithColor(ctx, [UIColor brownColor].CGColor);
 
-    for (Link *link in _links.copy) {
+    for (GRKLink *link in _links.copy) {
         CGContextAddPath(ctx, [self bodyPathForLink:link]);
         CGContextAddPath(ctx, [self arrowheadPathForLink:link]);
     }
@@ -221,7 +221,7 @@
     // TODO: finish implementation
 }
 
-- (CGRect)rectForLink:(Link *)link
+- (CGRect)rectForLink:(GRKLink *)link
 {
     CGPoint origin;
     origin.x = MIN(link.parentNode.center.x, link.childNode.center.x);

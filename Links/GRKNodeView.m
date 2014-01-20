@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 Alexander Ignatenko. All rights reserved.
 //
 
-#import "NodeView.h"
+#import "GRKNodeView.h"
 
-@interface NodeView ()
+@interface GRKNodeView ()
 
 @property (assign, nonatomic) CGFloat outlineWidth;
 
 @end
 
-@implementation NodeView
+@implementation GRKNodeView
 
-- (instancetype)initWithFrame:(CGRect)frame node:(id<Node>)node;
+- (instancetype)initWithFrame:(CGRect)frame node:(id<GRKNode>)node;
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -27,7 +27,7 @@
     return self;
 }
 
-- (instancetype)initWithNode:(id<Node>)node
+- (instancetype)initWithNode:(id<GRKNode>)node
 {
     return [self initWithFrame:CGRectZero node:node];
 }

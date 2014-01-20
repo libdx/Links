@@ -27,11 +27,11 @@
 		E18D8780187364E9007A8CD3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E18D8762187364E9007A8CD3 /* UIKit.framework */; };
 		E18D8788187364E9007A8CD3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E18D8786187364E9007A8CD3 /* InfoPlist.strings */; };
 		E18D878A187364E9007A8CD3 /* LinksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D8789187364E9007A8CD3 /* LinksTests.m */; };
-		E18D879F1874BB2F007A8CD3 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D879E1874BB2F007A8CD3 /* GraphView.m */; };
-		E18D87A21874BB46007A8CD3 /* LinksView.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D87A11874BB46007A8CD3 /* LinksView.m */; };
-		E18D87A51874C488007A8CD3 /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D87A41874C488007A8CD3 /* Node.m */; };
-		E18D87A81874C4B0007A8CD3 /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D87A71874C4B0007A8CD3 /* Link.m */; };
-		E18D87AB18759395007A8CD3 /* NodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D87AA18759395007A8CD3 /* NodeView.m */; };
+		E18D879F1874BB2F007A8CD3 /* GRKGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D879E1874BB2F007A8CD3 /* GRKGraphView.m */; };
+		E18D87A21874BB46007A8CD3 /* GRKLinksView.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D87A11874BB46007A8CD3 /* GRKLinksView.m */; };
+		E18D87A51874C488007A8CD3 /* GRKNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D87A41874C488007A8CD3 /* GRKNode.m */; };
+		E18D87A81874C4B0007A8CD3 /* GRKLink.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D87A71874C4B0007A8CD3 /* GRKLink.m */; };
+		E18D87AB18759395007A8CD3 /* GRKNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D87AA18759395007A8CD3 /* GRKNodeView.m */; };
 		E1ACDC8C187F4B24001FA8F7 /* UIView+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = E11681B9187754C600B041A9 /* UIView+Geometry.m */; };
 		E1ACDC981880B3FB001FA8F7 /* grk_math.c in Sources */ = {isa = PBXBuildFile; fileRef = E1ACDC971880B3FB001FA8F7 /* grk_math.c */; };
 /* End PBXBuildFile section */
@@ -79,16 +79,16 @@
 		E18D8785187364E9007A8CD3 /* LinksTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LinksTests-Info.plist"; sourceTree = "<group>"; };
 		E18D8787187364E9007A8CD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E18D8789187364E9007A8CD3 /* LinksTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinksTests.m; sourceTree = "<group>"; };
-		E18D879D1874BB2F007A8CD3 /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
-		E18D879E1874BB2F007A8CD3 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
-		E18D87A01874BB46007A8CD3 /* LinksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinksView.h; sourceTree = "<group>"; };
-		E18D87A11874BB46007A8CD3 /* LinksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinksView.m; sourceTree = "<group>"; };
-		E18D87A31874C488007A8CD3 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
-		E18D87A41874C488007A8CD3 /* Node.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Node.m; sourceTree = "<group>"; };
-		E18D87A61874C4B0007A8CD3 /* Link.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Link.h; sourceTree = "<group>"; };
-		E18D87A71874C4B0007A8CD3 /* Link.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Link.m; sourceTree = "<group>"; };
-		E18D87A918759395007A8CD3 /* NodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeView.h; sourceTree = "<group>"; };
-		E18D87AA18759395007A8CD3 /* NodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NodeView.m; sourceTree = "<group>"; };
+		E18D879D1874BB2F007A8CD3 /* GRKGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRKGraphView.h; sourceTree = "<group>"; };
+		E18D879E1874BB2F007A8CD3 /* GRKGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRKGraphView.m; sourceTree = "<group>"; };
+		E18D87A01874BB46007A8CD3 /* GRKLinksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRKLinksView.h; sourceTree = "<group>"; };
+		E18D87A11874BB46007A8CD3 /* GRKLinksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRKLinksView.m; sourceTree = "<group>"; };
+		E18D87A31874C488007A8CD3 /* GRKNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRKNode.h; sourceTree = "<group>"; };
+		E18D87A41874C488007A8CD3 /* GRKNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRKNode.m; sourceTree = "<group>"; };
+		E18D87A61874C4B0007A8CD3 /* GRKLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRKLink.h; sourceTree = "<group>"; };
+		E18D87A71874C4B0007A8CD3 /* GRKLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRKLink.m; sourceTree = "<group>"; };
+		E18D87A918759395007A8CD3 /* GRKNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRKNodeView.h; sourceTree = "<group>"; };
+		E18D87AA18759395007A8CD3 /* GRKNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRKNodeView.m; sourceTree = "<group>"; };
 		E1ACDC971880B3FB001FA8F7 /* grk_math.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = grk_math.c; sourceTree = "<group>"; };
 		E1DC7ACC187B0DEB00DE86CF /* grk_math.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grk_math.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -222,16 +222,16 @@
 		E1DC7ACD187B28ED00DE86CF /* GraphKit */ = {
 			isa = PBXGroup;
 			children = (
-				E18D87A31874C488007A8CD3 /* Node.h */,
-				E18D87A41874C488007A8CD3 /* Node.m */,
-				E18D87A61874C4B0007A8CD3 /* Link.h */,
-				E18D87A71874C4B0007A8CD3 /* Link.m */,
-				E18D879D1874BB2F007A8CD3 /* GraphView.h */,
-				E18D879E1874BB2F007A8CD3 /* GraphView.m */,
-				E18D87A01874BB46007A8CD3 /* LinksView.h */,
-				E18D87A11874BB46007A8CD3 /* LinksView.m */,
-				E18D87A918759395007A8CD3 /* NodeView.h */,
-				E18D87AA18759395007A8CD3 /* NodeView.m */,
+				E18D87A31874C488007A8CD3 /* GRKNode.h */,
+				E18D87A41874C488007A8CD3 /* GRKNode.m */,
+				E18D87A61874C4B0007A8CD3 /* GRKLink.h */,
+				E18D87A71874C4B0007A8CD3 /* GRKLink.m */,
+				E18D879D1874BB2F007A8CD3 /* GRKGraphView.h */,
+				E18D879E1874BB2F007A8CD3 /* GRKGraphView.m */,
+				E18D87A01874BB46007A8CD3 /* GRKLinksView.h */,
+				E18D87A11874BB46007A8CD3 /* GRKLinksView.m */,
+				E18D87A918759395007A8CD3 /* GRKNodeView.h */,
+				E18D87AA18759395007A8CD3 /* GRKNodeView.m */,
 				E1404F2E1885F21F001B8251 /* ShapesRnD */,
 				E1DC7ACC187B0DEB00DE86CF /* grk_math.h */,
 				E1ACDC971880B3FB001FA8F7 /* grk_math.c */,
@@ -338,17 +338,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1ACDC8C187F4B24001FA8F7 /* UIView+Geometry.m in Sources */,
-				E18D87A21874BB46007A8CD3 /* LinksView.m in Sources */,
+				E18D87A21874BB46007A8CD3 /* GRKLinksView.m in Sources */,
 				E18D8775187364E9007A8CD3 /* ViewController.m in Sources */,
-				E18D87AB18759395007A8CD3 /* NodeView.m in Sources */,
+				E18D87AB18759395007A8CD3 /* GRKNodeView.m in Sources */,
 				E18D876F187364E9007A8CD3 /* AppDelegate.m in Sources */,
 				E11681BD1877647B00B041A9 /* NSSet+SetOperations.m in Sources */,
 				E1404F2D1885E6D0001B8251 /* GRKShape2.m in Sources */,
 				E1404F311885F23A001B8251 /* GRKShape.m in Sources */,
-				E18D87A81874C4B0007A8CD3 /* Link.m in Sources */,
+				E18D87A81874C4B0007A8CD3 /* GRKLink.m in Sources */,
 				E1ACDC981880B3FB001FA8F7 /* grk_math.c in Sources */,
-				E18D87A51874C488007A8CD3 /* Node.m in Sources */,
-				E18D879F1874BB2F007A8CD3 /* GraphView.m in Sources */,
+				E18D87A51874C488007A8CD3 /* GRKNode.m in Sources */,
+				E18D879F1874BB2F007A8CD3 /* GRKGraphView.m in Sources */,
 				E14A24CC1886CE8B0026507F /* GRKShape2Loader.m in Sources */,
 				E14A24CF1886D22F0026507F /* GRKCollision.m in Sources */,
 				E18D876B187364E9007A8CD3 /* main.m in Sources */,

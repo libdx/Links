@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Alexander Ignatenko. All rights reserved.
 //
 
-#import "GraphView.h"
-#import "LinksView.h"
-#import "Node.h"
-#import "Link.h"
-#import "NodeView.h"
+#import "GRKGraphView.h"
+#import "GRKLinksView.h"
+#import "GRKNode.h"
+#import "GRKLink.h"
+#import "GRKNodeView.h"
 
-@interface GraphView ()
+@interface GRKGraphView ()
 
 @property (strong, nonatomic) UIView<GRKLinksView> *linksView;
 
@@ -42,7 +42,7 @@ static void setCenterY(UIView *view, CGFloat centerY)
     view.center = CGPointMake(view.center.x, centerY);
 }
 
-@implementation GraphView
+@implementation GRKGraphView
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -64,9 +64,10 @@ static void setCenterY(UIView *view, CGFloat centerY)
     CGPoint location = [tap locationInView:self];
 
     UIView *view = [self hitTest:location withEvent:nil];
-    if ([view isKindOfClass:[NodeView class]]) {
-        NodeView *nodeView = (NodeView *)view;
-        id<Node> node = nodeView.node;
+    if ([view isKindOfClass:[GRKNodeView class]]) {
+        GRKNodeView *nodeView = (GRKNodeView *)view;
+        [self bringSubviewToFront:nodeView];
+        id<GRKNode> node = nodeView.node;
         BOOL selected  = !node.isSelected;
         node.selected = selected;
         nodeView.selected = selected;
@@ -76,22 +77,22 @@ static void setCenterY(UIView *view, CGFloat centerY)
         else if (!node.isSelected && [_delegate respondsToSelector:@selector(graphView:didDeselectNode:)])
             [_delegate graphView:self didDeselectNode:node];
     } else {
-        Link *link;
-        id<Node> node = [self nodeWithCenter:location parent:_nodes.firstObject link:&link];
+        GRKLink *link;
+        id<GRKNode> node = [self nodeWithCenter:location parent:_nodes.firstObject link:&link];
 
         [self setNeedsUpdateByAddingNode:node link:link];
     }
 }
 
-- (id<Node>)nodeWithCenter:(CGPoint)center parent:(id<Node>)parent link:(Link **)outLink
+- (id<GRKNode>)nodeWithCenter:(CGPoint)center parent:(id<GRKNode>)parent link:(GRKLink **)outLink
 {
-    id<Node> node = [[BaseNode alloc] initWithCenter:center];
+    id<GRKNode> node = [[GRKBaseNode alloc] initWithCenter:center];
     if (parent)
-        *outLink = [[Link alloc] initWithParentNode:parent childNode:node];
+        *outLink = [[GRKLink alloc] initWithParentNode:parent childNode:node];
     return node;
 }
 
-- (void)setNeedsUpdateByAddingNode:(id<Node>)node link:(Link *)link
+- (void)setNeedsUpdateByAddingNode:(id<GRKNode>)node link:(GRKLink *)link
 {
     NSSet *nodes = [NSSet setWithObjects:node, nil];
     NSSet *links = [NSSet setWithObjects:link, nil];
@@ -116,7 +117,7 @@ static void setCenterY(UIView *view, CGFloat centerY)
     [_linksView setNeedsUpdateByAddingLinks:links];
 }
 
-- (void)addNode:(id<Node>)node
+- (void)addNode:(id<GRKNode>)node
 {
     [self addNodes:[NSSet setWithObjects:node, nil]];
 }
@@ -126,12 +127,12 @@ static void setCenterY(UIView *view, CGFloat centerY)
     [self addNodes:nodes withParent:nil];
 }
 
-- (void)addNode:(id<Node>)node withParent:(id<Node>)parent
+- (void)addNode:(id<GRKNode>)node withParent:(id<GRKNode>)parent
 {
     [self addNodes:[NSSet setWithObjects:node, nil] withParent:parent];
 }
 
-- (void)addNodes:(NSSet *)nodes withParent:(id<Node>)parent
+- (void)addNodes:(NSSet *)nodes withParent:(id<GRKNode>)parent
 {
     NSMutableSet *links;
     if (parent) {
@@ -140,8 +141,8 @@ static void setCenterY(UIView *view, CGFloat centerY)
                         format:@"Given node as parent %@ is not part of nodes graph", parent];
         }
         links = [NSMutableSet set];
-        [nodes enumerateObjectsUsingBlock:^(id<Node> node, BOOL *stop) {
-            [links addObject:[[Link alloc] initWithParentNode:parent childNode:node]];
+        [nodes enumerateObjectsUsingBlock:^(id<GRKNode> node, BOOL *stop) {
+            [links addObject:[[GRKLink alloc] initWithParentNode:parent childNode:node]];
         }];
     }
 
@@ -187,7 +188,7 @@ static void setCenterY(UIView *view, CGFloat centerY)
     NSPredicate *inAbandonedNodes = [NSPredicate predicateWithFormat:@"node in %@", abandonedNodes];
     *outAbandonedViews = [_nodeViews filteredSetUsingPredicate:inAbandonedNodes];
 
-    NSMutableSet *newViews = [NSMutableSet set]; for (id<Node> node in newNodes) {
+    NSMutableSet *newViews = [NSMutableSet set]; for (id<GRKNode> node in newNodes) {
         CGFloat x = node.center.x - round(node.size.width * 0.5);
         CGFloat y = node.center.y - round(node.size.height * 0.5);
         CGRect frame = CGRectMake(x,
@@ -198,9 +199,9 @@ static void setCenterY(UIView *view, CGFloat centerY)
         if ([_delegate respondsToSelector:@selector(graphView:viewForNode:)]) {
             view = [_delegate graphView:self viewForNode:node];
             view.frame = frame;
-        } else {
-            view = [[NodeView alloc] initWithFrame:frame node:node];
         }
+        if (nil == view)
+            view = [[GRKNodeView alloc] initWithFrame:frame node:node];
         [newViews addObject:view];
     }
     *outNewViews = newViews.copy;
@@ -211,8 +212,8 @@ static void setCenterY(UIView *view, CGFloat centerY)
     NSPredicate *selected = [NSPredicate predicateWithFormat:@"isSelected = TRUE"];
     _movedViews = [_nodeViews filteredSetUsingPredicate:selected];
     UITouch *touch = touches.anyObject;
-    if (![touch.view isKindOfClass:[NodeView class]]) {
-        [_movedViews enumerateObjectsUsingBlock:^(NodeView *view, BOOL *stop) {
+    if (![touch.view isKindOfClass:[GRKNodeView class]]) {
+        [_movedViews enumerateObjectsUsingBlock:^(GRKNodeView *view, BOOL *stop) {
             view.node.selected = NO;
             view.selected = NO;
         }];
@@ -226,10 +227,10 @@ static void setCenterY(UIView *view, CGFloat centerY)
     CGPoint previousLocation = [touch previousLocationInView:self];
     CGPoint delta = CGPointMake(location.x - previousLocation.x, location.y - previousLocation.y);
 
-    for (NodeView *view in _movedViews) {
+    for (GRKNodeView *view in _movedViews) {
         setCenterX(view, view.center.x + delta.x);
         setCenterY(view, view.center.y + delta.y);
-        id<Node> node = view.node;
+        id<GRKNode> node = view.node;
         node.center = view.center;
     }
 
@@ -243,8 +244,8 @@ static void setCenterY(UIView *view, CGFloat centerY)
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [_movedViews enumerateObjectsUsingBlock:^(NodeView *view, BOOL *stop) {
-        id<Node> node = view.node;
+    [_movedViews enumerateObjectsUsingBlock:^(GRKNodeView *view, BOOL *stop) {
+        id<GRKNode> node = view.node;
         node.center = view.center;
     }];
 

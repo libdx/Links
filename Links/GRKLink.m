@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Alexander Ignatenko. All rights reserved.
 //
 
-#import "Link.h"
+#import "GRKLink.h"
 
-@implementation Link
+@implementation GRKLink
 
-- (instancetype)initWithParentNode:(id<Node>)parent childNode:(id<Node>)child;
+- (instancetype)initWithParentNode:(id<GRKNode>)parent childNode:(id<GRKNode>)child;
 {
     self = [super init];
     if (nil == self)

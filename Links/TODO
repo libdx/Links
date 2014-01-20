@@ -6,6 +6,7 @@ Base Library:
  - overlays
  - scrolling on nodes' dragging
  - better ergonomic of nodes' dragging
+ - undo/redo
 
 Application:
  - control knobs
@@ -14,4 +15,6 @@ Application:
  - persistance
  - document browser
  - quick node creation "Quick Launch"
+ - text editing
+ - styles
 

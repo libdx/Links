@@ -7,9 +7,9 @@
 //
 
 #import "ViewController.h"
-#import "GraphView.h"
+#import "GRKGraphView.h"
 
-@interface ViewController ()
+@interface ViewController () <GRKGraphViewDelegate>
 
 @end
 
@@ -19,9 +19,26 @@
 {
     [super viewDidLoad];
 
-    GraphView *graphView = [[GraphView alloc] initWithFrame:self.view.bounds];
+    GRKGraphView *graphView = [[GRKGraphView alloc] initWithFrame:self.view.bounds];
     graphView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:graphView];
+}
+
+#pragma mark - GRKGraphViewDelegate
+
+- (GRKNodeView *)graphView:(GRKGraphView *)graphView viewForNode:(id<GRKNode>)node
+{
+    return nil;
+}
+
+- (void)graphView:(GRKGraphView *)graphView didSelectNode:(id<GRKNode>)node
+{
+
+}
+
+- (void)graphView:(GRKGraphView *)graphView didDeselectNode:(id<GRKNode>)node
+{
+    
 }
 
 @end

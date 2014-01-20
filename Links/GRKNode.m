@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Alexander Ignatenko. All rights reserved.
 //
 
-#import "Node.h"
+#import "GRKNode.h"
 
-@implementation BaseNode
+@implementation GRKBaseNode
 {
     GRKShapeData _shapeData;
 }
