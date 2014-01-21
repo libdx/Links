@@ -10,11 +10,15 @@
 
 @protocol GRKNode;
 
-@interface GRKLink : NSObject
+@protocol GRKLink <NSObject>
 
-@property (strong, nonatomic) id<GRKNode> parentNode;
+@property (weak, nonatomic) id<GRKNode> parentNode;
 @property (strong, nonatomic) id<GRKNode> childNode;
 
 - (instancetype)initWithParentNode:(id<GRKNode>)parent childNode:(id<GRKNode>)child;
+
+@end
+
+@interface GRKBaseLink : NSObject <GRKLink>
 
 @end

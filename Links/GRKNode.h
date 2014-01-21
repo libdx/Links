@@ -20,7 +20,15 @@
 @property (assign, nonatomic, getter = isHighlighted) BOOL highlighted;
 
 @property (assign, nonatomic) NSInteger shapeNumber;
-- (const GRKShapeData)shape;
+@property (assign, nonatomic, readonly) const GRKShapeData shape;
+
+//@property (nonatomic, readonly) NSSet *parents;
+//- (void)addParent:(id<GRKNode>)parent;
+//- (void)removeParent:(id<GRKNode>)parent;
+//
+//@property (nonatomic, readonly) NSSet *children;
+//- (void)addChild:(id<GRKNode>)child;
+//- (void)removeChild:(id<GRKNode>)child;
 
 @end
 

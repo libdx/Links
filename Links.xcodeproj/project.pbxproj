@@ -20,7 +20,7 @@
 		E18D876B187364E9007A8CD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D876A187364E9007A8CD3 /* main.m */; };
 		E18D876F187364E9007A8CD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D876E187364E9007A8CD3 /* AppDelegate.m */; };
 		E18D8772187364E9007A8CD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18D8770187364E9007A8CD3 /* Main.storyboard */; };
-		E18D8775187364E9007A8CD3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D8774187364E9007A8CD3 /* ViewController.m */; };
+		E18D8775187364E9007A8CD3 /* SceneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D8774187364E9007A8CD3 /* SceneViewController.m */; };
 		E18D8777187364E9007A8CD3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E18D8776187364E9007A8CD3 /* Images.xcassets */; };
 		E18D877E187364E9007A8CD3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E18D877D187364E9007A8CD3 /* XCTest.framework */; };
 		E18D877F187364E9007A8CD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E18D875E187364E9007A8CD3 /* Foundation.framework */; };
@@ -48,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		E11648BC188C808800279A3E /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
+		E11648BE188DAE0100279A3E /* GraphKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphKit.h; sourceTree = "<group>"; };
 		E11681B8187754C600B041A9 /* UIView+Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Geometry.h"; sourceTree = "<group>"; };
 		E11681B9187754C600B041A9 /* UIView+Geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Geometry.m"; sourceTree = "<group>"; };
 		E11681BB1877647B00B041A9 /* NSSet+SetOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+SetOperations.h"; sourceTree = "<group>"; };
@@ -71,8 +72,8 @@
 		E18D876D187364E9007A8CD3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E18D876E187364E9007A8CD3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E18D8771187364E9007A8CD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E18D8773187364E9007A8CD3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E18D8774187364E9007A8CD3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E18D8773187364E9007A8CD3 /* SceneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneViewController.h; sourceTree = "<group>"; };
+		E18D8774187364E9007A8CD3 /* SceneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneViewController.m; sourceTree = "<group>"; };
 		E18D8776187364E9007A8CD3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E18D877C187364E9007A8CD3 /* LinksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E18D877D187364E9007A8CD3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -117,6 +118,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E11648BF188DB20D00279A3E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E11681B8187754C600B041A9 /* UIView+Geometry.h */,
+				E11681B9187754C600B041A9 /* UIView+Geometry.m */,
+				E11681BB1877647B00B041A9 /* NSSet+SetOperations.h */,
+				E11681BC1877647B00B041A9 /* NSSet+SetOperations.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		E1404F2E1885F21F001B8251 /* ShapesRnD */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,15 +175,12 @@
 			isa = PBXGroup;
 			children = (
 				E11648BC188C808800279A3E /* TODO */,
-				E11681B8187754C600B041A9 /* UIView+Geometry.h */,
-				E11681B9187754C600B041A9 /* UIView+Geometry.m */,
-				E11681BB1877647B00B041A9 /* NSSet+SetOperations.h */,
-				E11681BC1877647B00B041A9 /* NSSet+SetOperations.m */,
+				E11648BF188DB20D00279A3E /* Utils */,
 				E18D876D187364E9007A8CD3 /* AppDelegate.h */,
 				E18D876E187364E9007A8CD3 /* AppDelegate.m */,
 				E18D8770187364E9007A8CD3 /* Main.storyboard */,
-				E18D8773187364E9007A8CD3 /* ViewController.h */,
-				E18D8774187364E9007A8CD3 /* ViewController.m */,
+				E18D8773187364E9007A8CD3 /* SceneViewController.h */,
+				E18D8774187364E9007A8CD3 /* SceneViewController.m */,
 				E1DC7ACD187B28ED00DE86CF /* GraphKit */,
 				E18D8776187364E9007A8CD3 /* Images.xcassets */,
 				E18D8765187364E9007A8CD3 /* Misc */,
@@ -222,6 +231,7 @@
 		E1DC7ACD187B28ED00DE86CF /* GraphKit */ = {
 			isa = PBXGroup;
 			children = (
+				E11648BE188DAE0100279A3E /* GraphKit.h */,
 				E18D87A31874C488007A8CD3 /* GRKNode.h */,
 				E18D87A41874C488007A8CD3 /* GRKNode.m */,
 				E18D87A61874C4B0007A8CD3 /* GRKLink.h */,
@@ -339,7 +349,7 @@
 			files = (
 				E1ACDC8C187F4B24001FA8F7 /* UIView+Geometry.m in Sources */,
 				E18D87A21874BB46007A8CD3 /* GRKLinksView.m in Sources */,
-				E18D8775187364E9007A8CD3 /* ViewController.m in Sources */,
+				E18D8775187364E9007A8CD3 /* SceneViewController.m in Sources */,
 				E18D87AB18759395007A8CD3 /* GRKNodeView.m in Sources */,
 				E18D876F187364E9007A8CD3 /* AppDelegate.m in Sources */,
 				E11681BD1877647B00B041A9 /* NSSet+SetOperations.m in Sources */,

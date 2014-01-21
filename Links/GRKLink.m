@@ -8,7 +8,10 @@
 
 #import "GRKLink.h"
 
-@implementation GRKLink
+@implementation GRKBaseLink
+
+@synthesize parentNode = _parentNode;
+@synthesize childNode = _childNode;
 
 - (instancetype)initWithParentNode:(id<GRKNode>)parent childNode:(id<GRKNode>)child;
 {

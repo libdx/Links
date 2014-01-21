@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class GRKLink;
+@protocol GRKLink;
 
 @protocol GRKLinksView <NSObject>
 
